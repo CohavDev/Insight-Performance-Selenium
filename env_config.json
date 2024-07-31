@@ -1,0 +1,6 @@
+{
+  "QA_IL": {
+    "URL": "https://qa-traffilink.qa.questarauto.com/traffilink/index.htm",
+    "user": { "name": "newQAil", "pass": "Aa123456" }
+  }
+}
