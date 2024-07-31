@@ -1,11 +1,17 @@
 from selenium import webdriver
 from src.pages.loginpage import LoginPage
 from src.pages.dashboard import Dashboard
-from src.pages.mapview import MapView
+from src.pages.driverspage import DriversPage
 from src.tools.timer import Timer
 import time
 
-def test_maps(config):
+# import json
+# json_file_path = "env_config.json"
+# with open(json_file_path, "r") as file:
+#     env_data = json.load(file)
+# config = env_data["QA_IL"]
+
+def test_drivers(config):
     timer = Timer(config)
     print("--- starting test case ---")
     print(config["user"]["name"])
@@ -22,17 +28,16 @@ def test_maps(config):
     login_page.wait_for_login()
     timer.end("Logged in Successfully")
     timer.logEvent("Login finished")
-
     time.sleep(2)
 
-    # Dashboard -> Map View
+    # Dashboard -> Drivers
     dashboard = Dashboard(driver)
-    mapview = MapView(driver)
+    drivers = DriversPage(driver)
     timer.start()
-    dashboard.navigate_mapview()
-    mapview.wait_tableloaded()
-    timer.end("Navigated to map view")
-    timer.logEvent("Navigation: Map Tab")
+    dashboard.navigate_drivers()
+    drivers.wait_tableloaded()
+    timer.end("Navigated to drivers")
+    timer.logEvent("Navigation: Drivers Tab")
     time.sleep(120)
     driver.quit()
     print("--- finished test case ---")
