@@ -40,7 +40,7 @@ def test_gen_report_trips(config):
     dashboard.navigate_reports()
     reports.init_report()
     timer.start()
-    reports.genereate_trips_report()
+    reports.generate_report()
     timer.end("generated report")
     timer.logEvent("Report Generation")
     time.sleep(10)

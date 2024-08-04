@@ -15,9 +15,9 @@ def read_configuration():
 
 try:
     config = read_configuration()
-    test_maps(config)
-    test_drivers(config)
-    test_vehicles(config)
+    # test_maps(config)
+    # test_drivers(config)
+    # test_vehicles(config)
     test_gen_report_trips(config)
 except Exception as e:
     print("\nAn error occured: ",e)
