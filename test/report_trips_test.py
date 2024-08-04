@@ -2,12 +2,18 @@ from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 from src.pages.loginpage import LoginPage
 from src.pages.dashboard import Dashboard
-from src.pages.mapview import MapView
+from src.pages.reportpage import ReportPage
 from src.tools.timer import Timer
 import time
 
-def test_maps(config):
-    config["test_case"] = "test_maps"
+# import json
+# json_file_path = "env_config.json"
+# with open(json_file_path, "r") as file:
+#     env_data = json.load(file)
+# config = env_data["QA_IL"]
+
+def test_gen_report_trips(config):
+    config["test_case"] = "test_gen_report_trips"
     timer = Timer(config)
     chrome_options = Options()
     chrome_options.add_argument('--headless')
@@ -26,17 +32,16 @@ def test_maps(config):
     login_page.wait_for_login()
     timer.end("Logged in Successfully")
     timer.logEvent("Login finished")
-
     time.sleep(2)
 
-    # Dashboard -> Map View
+    # Dashboard -> Vehicles
     dashboard = Dashboard(driver)
-    mapview = MapView(driver)
+    reports = ReportPage(driver)
     timer.start()
-    dashboard.navigate_mapview()
-    mapview.wait_tableloaded()
-    timer.end("Navigated to map view")
-    timer.logEvent("Navigation: Map Tab")
+    dashboard.navigate_reports()
+    reports.genereate_trips_report()
+    timer.end("genereated report")
+    timer.logEvent("Navigation: Reports Tab + trips report")
     time.sleep(10)
     driver.quit()
     print("--- finished test case ---")

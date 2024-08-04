@@ -13,6 +13,7 @@ class Timer():
     def _private_build_config_details(self, config):
         new_config = {
             "env_name":config["env_name"],
+            "test_case":config["test_case"],
             "url":config["URL"],
             "user_name":config["user"]["name"]
         }
