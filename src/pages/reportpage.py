@@ -28,7 +28,7 @@ class ReportPage(PageFactory):
         
 
     }
-    def genereate_trips_report(self):
+    def init_report(self):
         print("waiting for report side menu")
         wait = WebDriverWait(self.driver, timeout=60)
         elements = wait.until(EC.visibility_of_all_elements_located((By.CSS_SELECTOR, self.locators['fleet_util'][1] )))
@@ -59,11 +59,13 @@ class ReportPage(PageFactory):
         wait.until(EC.visibility_of_element_located((By.CSS_SELECTOR, self.locators['first_row'][1] )))
         self.select_all_checkbox.click()
         self.apply_vehicles_btn.click()
+        print("initiated report")
+        
+    def generate_report(self):
+        wait = WebDriverWait(self.driver, timeout=60)
         self.gen_report_btn.click()
         wait.until(EC.invisibility_of_element((By.CSS_SELECTOR, self.locators['loading_icon'][1] )))
         print("generated report!")
-        # time.sleep(20)
-
 
 
 

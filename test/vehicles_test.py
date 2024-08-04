@@ -6,11 +6,6 @@ from src.pages.vehiclespage import VehiclesPage
 from src.tools.timer import Timer
 import time
 
-# import json
-# json_file_path = "env_config.json"
-# with open(json_file_path, "r") as file:
-#     env_data = json.load(file)
-# config = env_data["QA_IL"]
 
 def test_vehicles(config):
     config["test_case"] = "test_vehicles"
